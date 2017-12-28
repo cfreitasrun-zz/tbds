@@ -21,7 +21,46 @@
          'public' => true,
          'has_archive' => true,
          'rewrite' => array(
-           'slug' => 'case-studies'
+           'slug' => 'case_studies'
+         ),
+       )
+     );
+     register_post_type('sites',
+       array(
+         'labels' => array(
+           'name' => _( 'Sites'),
+           'singular_name' => _( 'Site' )
+           ),
+         'public' => true,
+         'has_archive' => true,
+         'rewrite' => array(
+           'slug' => 'sites'
+         ),
+       )
+     );
+     register_post_type('concepts',
+       array(
+         'labels' => array(
+           'name' => _( 'Concepts'),
+           'singular_name' => _( 'Concept' )
+           ),
+         'public' => true,
+         'has_archive' => true,
+         'rewrite' => array(
+           'slug' => 'concept'
+         ),
+       )
+     );
+     register_post_type('pieces',
+       array(
+         'labels' => array(
+           'name' => _( 'Pieces'),
+           'singular_name' => _( 'Piece' )
+           ),
+         'public' => true,
+         'has_archive' => true,
+         'rewrite' => array(
+           'slug' => 'pieces'
          ),
        )
      );

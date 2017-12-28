@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying custom studies
+ * Template name: page-concepts
  *
  * @package WordPress
  * @subpackage tinybirddesignstudio Marketing
@@ -9,36 +9,46 @@
 
 get_header(); ?>
 
-	<div id="primary" class="site-content">
-		<div id="content" role="main">
-			<?php while ( have_posts() ) : the_post();
-					$services = get_field('services');
-					$client = get_field('client');
-					$link = get_field('site_link');
-					$size = "full";
-					$image_1 = get_field('image_1');
-					$image_2 = get_field('image_2');
-					$image_3 = get_field('image_3'); ?>
+<div id="primary" class="content-area">
+	<main id="main" class="site-main" role="main">
 
-			<article class="case-study">
-					<aside class="case-study-sidebar">
-								<h2><?php the_title(); ?></h2>
-								<h5><?php echo $services; ?></h5>
-								<h6>Client: <?php echo $client; ?></h6>
+<section class="home-page">
+		<?php while ( have_posts() ) : the_post(); ?>
+			<div class='homepage-hero'>
+				<h1>The full sites below feature a variation of styles</h1>
 
-								<?php the_content(); ?>
+			</div>
+		<?php endwhile; // end of the loop. ?>
+	<!-- .container -->
+</section><!-- .home-page -->
 
-								<p><strong><a href="<?php echo $link; ?>">Visit Live Site</a></strong></p>
-					</aside>
+<section class="featured-work">
+	<div class="site-content">
+		<h4>Featured Sites</h4>
 
-					<div class="case-study-images">
-							<?php echo wp_get_attachment_image($image_1, $size); ?>
-					</div>
+		<ul class="homepage-featured-work">
+		<?php query_posts('posts_per_page=3&post_type=case_studies'); ?>
+	  				<?php while ( have_posts() ) : the_post();
+										$concept = get_field("image_1");
+										$size = "medium";
+						?>
+						<li class="individual-featured-work">
+									<figure>
+												<?php echo wp_get_attachment_image($image_1, $size); ?>
+									</figure>
 
-			 				</article>
-							<?php endwhile; // end of the loop. ?>
+		 							<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 
-		</div><!-- #content -->
-	</div><!-- #primary -->
+									<h3><?php the_content(); ?></h3>
+									<p><strong><a href="<?php echo $link; ?>">Visit Live Site</a></strong></p>
+						</li>
+
+	  				<?php endwhile; // end of loop. ?>
+	  				<?php wp_reset_query(); ?>
+		</ul>
+
+		</div>
+</section>
+</div>
 
 <?php get_footer(); ?>

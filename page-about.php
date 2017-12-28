@@ -10,7 +10,8 @@
 get_header(); ?>
 
 <section class="about-page">
-
+	<div id="primary" class="about-area">
+		<main id="main" class="about-main" role="main">
 		<?php while ( have_posts() ) : the_post(); ?>
 			<div class='about-hero'>
 				<h2><span>Accelerate</span> is a strategy and marketing agency <br>
@@ -19,7 +20,7 @@ get_header(); ?>
 				making their customers smile.</h2>
 			</div>
 		<?php endwhile; // end of the loop. ?>
-
+</div>
 </section><!-- .home-page -->
 
 

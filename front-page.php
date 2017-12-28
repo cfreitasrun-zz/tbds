@@ -14,15 +14,17 @@
 
 get_header(); ?>
 
+<div id="primary" class="content-area">
+	<main id="main" class="site-main" role="main">
+
 <section class="home-page">
-	<div class="site-content">
 		<?php while ( have_posts() ) : the_post(); ?>
 			<div class='homepage-hero'>
 				<?php the_content(); ?>
-				<a class="button" href="<?php echo home_url(); ?>/blog">View Our Work</a>
+
 			</div>
 		<?php endwhile; // end of the loop. ?>
-	</div><!-- .container -->
+	<!-- .container -->
 </section><!-- .home-page -->
 
 <section class="featured-work">
@@ -41,6 +43,7 @@ get_header(); ?>
 									</figure>
 
 		 							<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+									<h3><?php the_content(); ?></h3>
 						</li>
 
 	  				<?php endwhile; // end of loop. ?>
@@ -50,16 +53,16 @@ get_header(); ?>
 		<h4>Services</h4>
 
 		<ul class="homepage-featured-work">
-		<?php query_posts('posts_per_page=4&post_type=services'); ?>
+		<?php query_posts('posts_per_page=&post_type=services'); ?>
 	  				<?php while ( have_posts() ) : the_post();
-										$image_1 = get_field("image_1");
+										$featuredsite = get_field("featuredsite");
 										$size = "medium";
 						?>
 						<li class="individual-featured-work">
 
 
 									<figure>
-												<?php echo wp_get_attachment_image($image_1, $size); ?>
+												<?php echo wp_get_attachment_image($featuredsite, $size); ?>
 												<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 									</figure>
 
@@ -71,34 +74,9 @@ get_header(); ?>
 
 	</div>
 </section>
-
-<section class="recent-posts">
-	 <div class="site-content">
-	 	<div class="blog-post">
-			<h4>From the Blog</h4>
-
-			<?php query_posts('posts_per_page=1'); ?>
-			<?php while ( have_posts() ) : the_post(); ?>
-				<h2><?php the_title(); ?></h2>
-				<?php the_excerpt(); ?>
-				<a href="<?php the_permalink(); ?>" class="read-more-link">Read More <span>&rsaquo;</span></a>
-			<?php endwhile; // end of loop. ?>
-			<?php wp_reset_query(); ?>
-
-	 	</div><!--blog post-->
+</div>
 
 
-		<!-- Dynamic Sidebar -->
-		<div class="recent-tweets">
-			<h4>Recent Tweets</h4>
-			<?php if ( is_active_sidebar( 'sidebar-2' ) ) : ?>
-				<div id="secondary" class="widget-area" role="complementary">
-						<?php dynamic_sidebar( 'sidebar-2' ); ?>
-						<a class="follow-us-link" href="<?php the_permalink(); ?>">Follow Us<span>&rsaquo;
-				</span></a>
-			</div>
-			<?php endif; ?>
-		</div><!--tweets-->
 
 	</div><!--site content-->
 </section>
