@@ -1,6 +1,6 @@
 <?php
 /**
- * Template name: page-concepts
+ * Template name: sites page
  *
  * @package WordPress
  * @subpackage tinybirddesignstudio Marketing
@@ -15,7 +15,7 @@ get_header(); ?>
 <section class="home-page">
 		<?php while ( have_posts() ) : the_post(); ?>
 			<div class='homepage-hero'>
-				<h1>The full sites below feature a variation of styles</h1>
+				<h1>My site collection</h1>
 
 			</div>
 		<?php endwhile; // end of the loop. ?>
@@ -24,12 +24,12 @@ get_header(); ?>
 
 <section class="featured-work">
 	<div class="site-content">
-		<h4>Featured Sites</h4>
+		<h4>Sites</h4>
 
 		<ul class="homepage-featured-work">
-		<?php query_posts('posts_per_page=3&post_type=case_studies'); ?>
+		<?php query_posts('posts_per_page=3&post_type=sites'); ?>
 	  				<?php while ( have_posts() ) : the_post();
-										$concept = get_field("image_1");
+										$image_1 = get_field("image_1");
 										$size = "medium";
 						?>
 						<li class="individual-featured-work">
