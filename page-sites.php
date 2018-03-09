@@ -1,6 +1,6 @@
 <?php
 /**
- * Template name: page-pieces
+ * Template name: Page-sites
  *
  * This is the template that displays all pages by default.
  * Please note that this is the WordPress construct of pages
@@ -23,24 +23,24 @@
  <section class="home-page">
  		<?php while ( have_posts() ) : the_post(); ?>
  			<div class='homepage-hero'>
- 				<h1>My Virtual Playgrond</h1>
+ 				<h1>Concepts</h1>
 
  			</div>
  		<?php endwhile; // end of the loop. ?>
  	<!-- .container -->
  </section><!-- .home-page -->
 
- <section class="grid-gallery">
+ <section class="featured-work">
  	<div class="site-content">
- 		<h4>In Puzzle Pieces</h4>
+ 		<h4>websites</h4>
 
- 		<ul class="grid-gallery-work">
- 		<?php query_posts('posts_per_page=6&post_type=pieces'); ?>
+ 		<ul class="homepage-featured-work">
+ 		<?php query_posts('posts_per_page=6&post_type=sites'); ?>
  	  				<?php while ( have_posts() ) : the_post();
  										$image_1 = get_field("image_1");
  										$size = "medium";
  						?>
- 						<li class="individual-piece">
+ 						<li class="individual-featured-work">
  									<figure>
  												<?php echo wp_get_attachment_image($image_1, $size); ?>
  									</figure>
@@ -56,6 +56,8 @@
  		</ul>
 
  		</div>
+
+    <?php	echo paginate_links(); ?>
  </section>
  </div>
 
